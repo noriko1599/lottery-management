@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "lottery_management"
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app
+
+  back-end:
+    restart: always
+    build:
+      context: back-end
+      target: develop-stage
+    volumes:
+      - .:/back-end
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "cd back-end && npm run start:dev"
+    depends_on:
+      - db
+    networks:
+      - app
+  # front-end:
+  #   restart: always
+  #   build:
+  #     context: front-end
+  #     target: develop-stage
+  #   volumes:
+  #     - .:/front-end
+  #   ports:
+  #     - 8080:8080
+  #   command: /bin/sh -c "cd front-end && npm run dev"
+  #   depends_on:
+  #     - db
+  #     - back-end
+  #   networks:
+  #     - app
+networks:
+  app:
+    driver: bridge
+volumes:
+  db_data:
