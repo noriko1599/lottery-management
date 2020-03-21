@@ -4,113 +4,137 @@
       <div class="col text-h3 text-center">คีย์หวย</div>
     </div>
     <q-separator />
-    <div class="row q-my-xl">
+    <div class="row">
       <div class="col-xs-12 col-md-6 q-pa-md">
-        <q-select
-          outlined
-          v-model="memberId"
-          :options="members"
-          label="ลูกมือ"
-          emit-value
-          map-options
-          @input="nextForm(`number`)"
-        />
+        <div class="row q-my-xl">
+          <div class="col-xs-12 col-md-12 q-pa-md">
+            <q-select
+              outlined
+              v-model="memberId"
+              :options="members"
+              label="ลูกมือ"
+              emit-value
+              map-options
+              @input="nextForm(`number`)"
+            />
+          </div>
+          <div class="col-xs12 col-12 q-pa-md">
+            <q-input
+              ref="number"
+              @keyup.enter="nextForm(`s`)"
+              v-model="number"
+              outlined
+              type="number"
+              label="เบอร์"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="number"
-          @keyup.enter="nextForm(`s`)"
-          v-model="number"
-          outlined
-          type="number"
-          label="เบอร์"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="s"
-          @keyup.enter="nextForm(`a1`)"
-          v-model="s"
-          outlined
-          type="number"
-          label="S"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="a1"
-          @keyup.enter="nextForm(`b1`)"
-          v-model="a1"
-          outlined
-          type="number"
-          label="A1"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="b1"
-          @keyup.enter="nextForm(`c1`)"
-          v-model="b1"
-          outlined
-          type="number"
-          label="B1"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="c1"
-          @keyup.enter="nextForm(`a`)"
-          v-model="c1"
-          outlined
-          type="number"
-          label="C1"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input ref="a" @keyup.enter="nextForm(`b`)" v-model="a" outlined type="number" label="A" />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input ref="b" @keyup.enter="nextForm(`c`)" v-model="b" outlined type="number" label="B" />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="c"
-          @keyup.enter="nextForm(`big`)"
-          v-model="c"
-          outlined
-          type="number"
-          label="C"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="big"
-          @keyup.enter="nextForm(`n`)"
-          v-model="big"
-          outlined
-          type="number"
-          label="BIG"
-        />
-      </div>
-      <div class="col-xs12 col-6 q-pa-md">
-        <q-input
-          ref="n"
-          @keyup.enter.prevent="nextForm(`purchaseBtn`)"
-          v-model="n"
-          outlined
-          type="number"
-          label="N"
-        />
+      <div class="col-xs-12 col-md-6 q-pa-md">
+        <div class="row q-my-xl">
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="s"
+              @keyup.enter="nextForm(`a1`)"
+              v-model="s"
+              outlined
+              type="number"
+              label="S"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="a1"
+              @keyup.enter="nextForm(`b1`)"
+              v-model="a1"
+              outlined
+              type="number"
+              label="A1"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="b1"
+              @keyup.enter="nextForm(`c1`)"
+              v-model="b1"
+              outlined
+              type="number"
+              label="B1"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="c1"
+              @keyup.enter="nextForm(`a`)"
+              v-model="c1"
+              outlined
+              type="number"
+              label="C1"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="a"
+              @keyup.enter="nextForm(`b`)"
+              v-model="a"
+              outlined
+              type="number"
+              label="A"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="b"
+              @keyup.enter="nextForm(`c`)"
+              v-model="b"
+              outlined
+              type="number"
+              label="B"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="c"
+              @keyup.enter="nextForm(`big`)"
+              v-model="c"
+              outlined
+              type="number"
+              label="C"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="big"
+              @keyup.enter="nextForm(`n`)"
+              v-model="big"
+              outlined
+              type="number"
+              label="BIG"
+            />
+          </div>
+          <div class="col-xs12 col-4 q-pa-md">
+            <q-input
+              ref="n"
+              @keyup.enter.prevent="nextForm(`purchaseBtn`)"
+              v-model="n"
+              outlined
+              type="number"
+              label="N"
+            />
+          </div>
+        </div>
       </div>
       <div class="col-12 q-pa-md">
-        <q-btn
-          ref="purchaseBtn"
-          style="width: 100%"
-          size="lg"
-          color="green"
-          label="คีย์หวย"
-          @click.prevent="purchase()"
-        />
+        <div class="col-12 q-pa-md">
+          <q-btn
+            ref="purchaseBtn"
+            style="width: 100%"
+            size="lg"
+            color="green"
+            label="คีย์หวย"
+            @click.prevent="purchase()"
+          />
+        </div>
       </div>
     </div>
   </q-page>

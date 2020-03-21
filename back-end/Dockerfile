@@ -2,6 +2,7 @@ FROM node:12.14-alpine As base-stage
 WORKDIR /back-end
 COPY . ./back-end
 RUN npm install ----only=development
+RUN npm install @nestjs/cli -g
 ## --------------------------------------------------------------------------------- ##
 FROM base-stage AS develop-stage
 ENV NODE_ENV=development

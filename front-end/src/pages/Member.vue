@@ -1,124 +1,297 @@
 <template>
   <q-page padding>
-    <div class="row q-mt-md q-mb-xl q-px-md">
+    <!-- <div class="row q-mt-md q-mb-xl q-px-md">
       <div class="col col-xs-12">
         <div class="text-h3 text-center">จัดการข้อมูลลูกมือ</div>
       </div>
     </div>
-    <q-separator />
-    <div class="row q-my-xl">
+    <q-separator />-->
+    <div class="row q-mt-md">
       <div class="col-12 col-xs-12 q-px-md q-pb-md">
         <div class="text-h4 text-center">เพิ่มลูกมือ</div>
       </div>
-      <div class="col-md-6 col-xs-12 q-pa-md">
+      <div class="col-md-12 q-px-md">
+        <div class="text-h6">ชื่อลูกมือ</div>
+      </div>
+      <div class="col-md-12 col-xs-12 q-px-md">
         <q-input
           v-model="name"
           type="text"
           outlined
           label="ชื่อลูกมือ"
-          @keyup.enter="nextForm(`number`)"
+          @keyup.enter="nextForm(`sCommission`)"
         />
       </div>
-      <div class="col-md-6 col-xs-12 q-pa-md">
-        <q-input
-          ref="number"
-          v-model="commission"
-          outlined
-          type="number"
-          label="ค่าคอม"
-          @keyup.enter="nextForm(`sReward`)"
-        />
+    </div>
+    <div class="row q-my-md">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">S</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="sCommission"
+              v-model="sCommission"
+              outlined
+              type="number"
+              label="ค่าคอม S"
+              @keyup.enter="nextForm(`sReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="sReward"
+              @keyup.enter="nextForm(`a1Commission`)"
+              v-model="sReward"
+              outlined
+              type="number"
+              label="S รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="sReward"
-          @keyup.enter="nextForm(`a1Reward`)"
-          v-model="sReward"
-          outlined
-          type="number"
-          label="S รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6 q-pb-md">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">A1</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="a1Commission"
+              v-model="a1Commission"
+              outlined
+              type="number"
+              label="ค่าคอม A1"
+              @keyup.enter="nextForm(`a1Reward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="a1Reward"
+              @keyup.enter="nextForm(`b1Commission`)"
+              v-model="a1Reward"
+              outlined
+              type="number"
+              label="A1 รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="a1Reward"
-          @keyup.enter="nextForm(`b1Reward`)"
-          v-model="a1Reward"
-          outlined
-          type="number"
-          label="A1 รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">B1</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="b1Commission"
+              v-model="b1Commission"
+              outlined
+              type="number"
+              label="ค่าคอม B1"
+              @keyup.enter="nextForm(`b1Reward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="b1Reward"
+              @keyup.enter="nextForm(`c1Commission`)"
+              v-model="b1Reward"
+              outlined
+              type="number"
+              label="B1 รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="b1Reward"
-          @keyup.enter="nextForm(`c1Reward`)"
-          v-model="b1Reward"
-          outlined
-          type="number"
-          label="B1 รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">C1</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="c1Commission"
+              v-model="c1Commission"
+              outlined
+              type="number"
+              label="ค่าคอม C1"
+              @keyup.enter="nextForm(`c1Reward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="c1Reward"
+              @keyup.enter="nextForm(`aCommission`)"
+              v-model="c1Reward"
+              outlined
+              type="number"
+              label="C1 รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="c1Reward"
-          @keyup.enter="nextForm(`aReward`)"
-          v-model="c1Reward"
-          outlined
-          type="number"
-          label="C1 รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6 q-pb-md">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">A</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="aCommission"
+              v-model="aCommission"
+              outlined
+              type="number"
+              label="ค่าคอม A"
+              @keyup.enter="nextForm(`aReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="aReward"
+              @keyup.enter="nextForm(`bCommission`)"
+              v-model="aReward"
+              outlined
+              type="number"
+              label="A รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="aReward"
-          @keyup.enter="nextForm(`bReward`)"
-          v-model="aReward"
-          outlined
-          type="number"
-          label="A รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">B</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="bCommission"
+              v-model="bCommission"
+              outlined
+              type="number"
+              label="ค่าคอม B"
+              @keyup.enter="nextForm(`bReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="bReward"
+              @keyup.enter="nextForm(`cCommission`)"
+              v-model="bReward"
+              outlined
+              type="number"
+              label="B รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="bReward"
-          @keyup.enter="nextForm(`cReward`)"
-          v-model="bReward"
-          outlined
-          type="number"
-          label="B รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">C</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="cCommission"
+              v-model="cCommission"
+              outlined
+              type="number"
+              label="ค่าคอม C"
+              @keyup.enter="nextForm(`cReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="cReward"
+              @keyup.enter="nextForm(`bigCommission`)"
+              v-model="cReward"
+              outlined
+              type="number"
+              label="C รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="cReward"
-          @keyup.enter="nextForm(`bigReward`)"
-          v-model="cReward"
-          outlined
-          type="number"
-          label="C รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6 q-pb-md">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">Big</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="bigCommission"
+              v-model="bigCommission"
+              outlined
+              type="number"
+              label="ค่าคอม Big"
+              @keyup.enter="nextForm(`bigReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="bigReward"
+              @keyup.enter="nextForm(`nCommission`)"
+              v-model="bigReward"
+              outlined
+              type="number"
+              label="Big รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="bigReward"
-          @keyup.enter="nextForm(`nReward`)"
-          v-model="bigReward"
-          outlined
-          type="number"
-          label="BIG รางวัลบาทละ"
-        />
+
+      <!-- ----------------------------------------------------------- -->
+
+      <div class="col-md-6 col-pb-md">
+        <div class="row">
+          <div class="col-md-12 q-px-md">
+            <div class="text-h6">N</div>
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="nCommission"
+              v-model="nCommission"
+              outlined
+              type="number"
+              label="ค่าคอม N"
+              @keyup.enter="nextForm(`nReward`)"
+            />
+          </div>
+          <div class="col-md-6 q-px-md">
+            <q-input
+              ref="nReward"
+              @keyup.enter="nextForm(`createMemberBtn`)"
+              v-model="nReward"
+              outlined
+              type="number"
+              label="N รางวัลบาทละ"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-6 col-6 q-pa-md">
-        <q-input
-          ref="nReward"
-          @keyup.enter.prevent="nextForm(`createMemberBtn`)"
-          v-model="nReward"
-          outlined
-          type="number"
-          label="N รางวัลบาทละ"
-        />
-      </div>
+
       <div class="col q-px-md col-xs-12 q-mt-md text-right">
         <q-btn
           ref="createMemberBtn"
@@ -148,130 +321,77 @@ import {
   MEMBER_ACTION,
   MEMBER_MUTATION
 } from "../store/member/types";
+import { memberListTableColumns } from "../commons/member-list-table-columns";
 export default {
   data() {
     return {
       name: null,
-      commission: null,
       sReward: null,
+      sCommission: null,
       a1Reward: null,
+      a1Commission: null,
       b1Reward: null,
+      b1Commission: null,
       c1Reward: null,
+      c1Commission: null,
       aReward: null,
+      aCommission: null,
       bReward: null,
+      bCommission: null,
       cReward: null,
+      cCommission: null,
       bigReward: null,
+      bigCommission: null,
       nReward: null,
-      columns: [
-        {
-          name: "name",
-          label: "ชื่อ",
-          field: "name",
-          sortable: true,
-          align: `center`
-        },
-        {
-          name: "commission",
-          label: "ค่าคอม",
-          field: "commission",
-          align: `center`,
-          format: (val, row) => `${val}%`
-        },
-        {
-          name: "sReward",
-          label: "s",
-          field: "sReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "a1Reward",
-          label: "a1",
-          field: "a1Reward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "b1Reward",
-          label: "b1",
-          field: "b1Reward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "c1Reward",
-          label: "c1",
-          field: "c1Reward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "aReward",
-          label: "a",
-          field: "aReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "bReward",
-          label: "b",
-          field: "bReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "cReward",
-          label: "c",
-          field: "cReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "bigReward",
-          label: "big",
-          field: "bigReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        },
-        {
-          name: "nReward",
-          label: "n",
-          field: "nReward",
-          align: `center`,
-          format: (val, row) => `บาทละ ${val}`
-        }
-      ]
+      nCommission: null,
+      columns: memberListTableColumns
     };
   },
   methods: {
     async createMember() {
       if (
         !this.name ||
-        !this.commission ||
         !this.sReward ||
+        !this.sCommission ||
         !this.a1Reward ||
+        !this.a1Commission ||
         !this.b1Reward ||
+        !this.b1Commission ||
         !this.c1Reward ||
+        !this.c1Commission ||
         !this.aReward ||
+        !this.aCommission ||
         !this.bReward ||
+        !this.bCommission ||
         !this.cReward ||
+        !this.cCommission ||
         !this.bigReward ||
-        !this.nReward
+        !this.bigCommission ||
+        !this.nReward ||
+        !this.nCommission
       ) {
         return;
       }
       const member = {
         name: this.name,
-        commission: this.commission,
         sReward: this.sReward,
+        sCommission: this.sCommission,
         a1Reward: this.a1Reward,
+        a1Commission: this.a1Commission,
         b1Reward: this.b1Reward,
+        b1Commission: this.b1Commission,
         c1Reward: this.c1Reward,
+        c1Commission: this.c1Commission,
         aReward: this.aReward,
+        aCommission: this.aCommission,
         bReward: this.bReward,
+        bCommission: this.bCommission,
         cReward: this.cReward,
+        cCommission: this.cCommission,
         bigReward: this.bigReward,
-        nReward: this.nReward
+        bigCommission: this.bigCommission,
+        nReward: this.nReward,
+        nCommission: this.nCommission
       };
       await this.$store.dispatch(
         `member/${MEMBER_ACTION.CREATE_MEMBER}`,
@@ -281,7 +401,24 @@ export default {
     },
     clearField() {
       this.name = null;
-      this.commission = null;
+      this.sReward = null;
+      this.sCommission = null;
+      this.a1Reward = null;
+      this.a1Commission = null;
+      this.b1Reward = null;
+      this.b1Commission = null;
+      this.c1Reward = null;
+      this.c1Commission = null;
+      this.aReward = null;
+      this.aCommission = null;
+      this.bReward = null;
+      this.bCommission = null;
+      this.cReward = null;
+      this.cCommission = null;
+      this.bigReward = null;
+      this.bigCommission = null;
+      this.nReward = null;
+      this.nCommission = null;
     },
     nextForm(target) {
       this.$refs[target].$el.focus();
