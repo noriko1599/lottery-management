@@ -14,21 +14,20 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - app
-
-  back-end:
-    restart: always
-    build:
-      context: back-end
-      target: develop-stage
-    volumes:
-      - .:/back-end
-    ports:
-      - 3000:3000
-    command: /bin/sh -c "cd back-end && npm run start:dev"
-    depends_on:
-      - db
-    networks:
-      - app
+  # back-end:
+  #   restart: always
+  #   build:
+  #     context: back-end
+  #     target: develop-stage
+  #   volumes:
+  #     - .:/back-end
+  #   ports:
+  #     - 3000:3000
+  #   command: /bin/sh -c "cd back-end && npm run start:dev"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - app
   # front-end:
   #   restart: always
   #   build:
