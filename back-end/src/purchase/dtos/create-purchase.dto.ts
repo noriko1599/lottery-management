@@ -22,5 +22,7 @@ export class CreatePurchaseDTO {
 
     n: number
 
-    memberId: string;
+    memberId: string
+
+    periodId: string
 }
